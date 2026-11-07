@@ -11,10 +11,10 @@ Marketing site for **ProfKons** (profkons.com): an organisational development an
 ## Layout
 
 ```
-index.html      Home: hero, problem, founder, philosophy, outcomes, approach journey, why, credentials, closing CTA
-about.html      Belief, what we bring (functions grid), difference (steps), focus, equation, leader strip
+index.html      Home: hero, problem, founder teaser, outcomes (= the six services, linked), approach journey, why, credentials, closing CTA
+about.html      Belief, full founder profile (#founder), what we bring, difference (steps), belief equation, philosophy (#philosophy), .cta-panel
 services.html   Six services as <article class="service" id="..."> + sticky in-page index
-partners.html   "Who we partner" cards (.partner) + .cta-panel
+partners.html   "Our focus" checklist, "Who we partner" cards (.partner), .cta-panel
 gallery.html    Poster gallery + <dialog> lightbox, then post topics
 contact.html    Contact card + mailto contact form (includes the business-challenge checklist)
 privacy.html    Legal (.legal), "Last updated: November 2026"
@@ -88,8 +88,9 @@ The challenge checklist is a `<fieldset class="form-challenges">` in contact.htm
 - Phone: `+91 96644 55807` (`tel:+919664455807`); email `inquiry@profkons.com`; LinkedIn `https://www.linkedin.com/in/profkons` (external links use `target="_blank" rel="noopener"`).
 - "35+ years of multidisciplinary global business experience".
 - Credentials bars (home): 35+ assessed, 14 partnered, 11 under execution, 3 turnarounds "in just the last 10 months"; `--w` widths are proportional to 35 (e.g. 14/35 = 40%). Recompute if numbers change.
-- Method: Diagnose → Redesign → Implement/Execute → Measure (→ Sustain on the approach journey).
-- Six services (ids): `business-transformation`, `organisational-development`, `operational-excellence`, `profitability`, `strategy-execution`, `governance`.
+- Method wording is **Diagnose → Redesign → Implement → Measure** (→ Sustain on the approach journey). Use "Implement", not "Execute".
+- Six services (ids): `business-transformation`, `organisational-development`, `operational-excellence`, `profitability`, `strategy-execution`, `governance`. The Home "What we help businesses achieve" cards mirror these names and link to `services.html#<id>` — rename both together.
+- Content placement: Home holds short teasers that link out; the full founder bio and philosophy live on About; client-fit content ("Our focus") lives on Who we partner.
 These facts appear in multiple places (hero, founder block, about, contact card, footer, posters' alt text) — grep before changing any of them.
 
 ### Images
