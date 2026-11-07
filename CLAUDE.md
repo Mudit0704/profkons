@@ -102,4 +102,4 @@ Skip link, single `h1` per page, labelled sections, `aria-current` nav, `aria-ex
 ## Housekeeping
 - `.DS_Store` is ignored via `.gitignore`; never commit it.
 - License: MIT (code). Fonts: SIL OFL.
-- Deploy: upload the folder as-is to any static host (Netlify drop, GitHub Pages, Cloudflare Pages, Vercel, cPanel `public_html`).
+- Deploy: the live site is served by **GitHub Pages** from `main` of `github.com/Mudit0704/profkons` at **www.profkons.com** — pushing to `main` publishes. The root `CNAME` file (`www.profkons.com`) sets the custom domain; never delete or rename it. Because Pages serves the repo root, every committed file is public — don't commit drafts or private material.
