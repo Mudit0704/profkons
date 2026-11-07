@@ -11,8 +11,8 @@ Marketing site for **ProfKons** (profkons.com): an organisational development an
 ## Layout
 
 ```
-index.html      Home: hero, problem, founder teaser, outcomes (= the six services, linked), approach journey, why, credentials, closing CTA
-about.html      Belief, full founder profile (#founder), what we bring, difference (steps), belief equation, philosophy (#philosophy), .cta-panel
+index.html      Home: hero, problem, founder teaser, outcomes (= the six services, linked), approach journey, compact why (.reasons--compact), credentials, closing CTA
+about.html      Belief, full founder profile (#founder), what we bring, difference (steps), why ProfKons (#why), belief equation, philosophy (#philosophy), .cta-panel
 services.html   Six services as <article class="service" id="..."> + sticky in-page index
 partners.html   "Our focus" checklist, "Who we partner" cards (.partner), .cta-panel
 gallery.html    Poster gallery + <dialog> lightbox, then post topics
@@ -90,7 +90,8 @@ The challenge checklist is a `<fieldset class="form-challenges">` in contact.htm
 - Credentials bars (home): 35+ assessed, 14 partnered, 11 under execution, 3 turnarounds "in just the last 10 months"; `--w` widths are proportional to 35 (e.g. 14/35 = 40%). Recompute if numbers change.
 - Method wording is **Diagnose → Redesign → Implement → Measure** (→ Sustain on the approach journey). Use "Implement", not "Execute".
 - Six services (ids): `business-transformation`, `organisational-development`, `operational-excellence`, `profitability`, `strategy-execution`, `governance`. The Home "What we help businesses achieve" cards mirror these names and link to `services.html#<id>` — rename both together.
-- Content placement: Home holds short teasers that link out; the full founder bio and philosophy live on About; client-fit content ("Our focus") lives on Who we partner.
+- Content placement: Home holds short teasers that link out; the full founder bio, Why ProfKons (with descriptions) and philosophy live on About; client-fit content ("Our focus") lives on Who we partner.
+- Each `.cta-panel` has its own heading. "Every business challenge has a starting point." is reserved for the Contact page H1 — don't reuse it.
 These facts appear in multiple places (hero, founder block, about, contact card, footer, posters' alt text) — grep before changing any of them.
 
 ### Images

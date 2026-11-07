@@ -574,6 +574,11 @@ h3 { font-size: var(--step-1); letter-spacing: -0.01em; line-height: 1.3; }
 .reasons .icon { width: 2.2rem; height: 2.2rem; color: var(--orange-deep); grid-row: span 2; margin-top: 0.15rem; }
 .reasons h3 { font-size: 1.18rem; }
 .reasons p { color: var(--muted); font-size: 1.02rem; }
+.reasons--compact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; }
+.reasons--compact li { grid-template-columns: 2.4rem 1fr; align-items: center; padding: 1.15rem 0; }
+.reasons--compact li:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+.reasons--compact .icon { width: 1.8rem; height: 1.8rem; grid-row: auto; margin-top: 0; }
+@media (max-width: 600px) { .reasons--compact { grid-template-columns: 1fr; } .reasons--compact li:nth-last-child(2) { border-bottom: 0; } }
 @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .split-aside { position: static; } }
 
 /* ---------- Credentials ---------- */
