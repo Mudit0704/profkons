@@ -15,8 +15,8 @@ index.html      Home: hero, problem, founder, philosophy, outcomes, approach jou
 about.html      Belief, what we bring (functions grid), difference (steps), focus, equation, leader strip
 services.html   Six services as <article class="service" id="..."> + sticky in-page index
 partners.html   "Who we partner" cards (.partner) + .cta-panel
-gallery.html    Business-challenge self-check, post topics, poster gallery + <dialog> lightbox
-contact.html    Contact card + mailto contact form
+gallery.html    Poster gallery + <dialog> lightbox, then post topics
+contact.html    Contact card + mailto contact form (includes the business-challenge checklist)
 privacy.html    Legal (.legal), "Last updated: November 2026"
 terms.html      Legal (.legal), "Last updated: November 2026"
 assets/css/style.css   The only stylesheet
@@ -76,13 +76,13 @@ Behaviour is wired via `data-*` attributes — keep them when editing markup:
 | `[data-nav-toggle]` + `#site-nav` | Mobile menu (`.is-open`, Esc closes, auto-closes >1040px) |
 | `[data-year]` | Footer becomes "2026–YYYY" after 2026 |
 | `[data-service-link]` + `.service[id]` | Services index highlight via IntersectionObserver (href must be `#<article id>`) |
-| `[data-challenge]`, `[data-challenge-count]`, `[data-challenge-link]` | Gallery self-check; builds `contact.html?challenges=<newline-joined values>` |
+| `[data-challenge]` (checkboxes inside the contact form) | Business-challenge checklist; ticked `value`s go into the email body |
 | `[data-lightbox]`, `[data-full]`, `[data-caption]`, `[data-lightbox-close]` | Gallery `<dialog>` lightbox (falls back to new tab) |
 | `[data-contact-form]`, `data-to`, `[data-form-status]` | Contact form |
 
-**Contact form:** client-side validation (name required; email *or* phone required; email format; message required), then opens a `mailto:` to `data-to` (`inquiry@profkons.com`) with a prefilled subject/body. Nothing is submitted to a server. If `?challenges=` is present, the message textarea is prefilled. Field ids `name, company, designation, email, phone, message` are referenced by JS; each validated field sits in a `.field` wrapper with a `.error` span. To switch to Formspree/Netlify Forms, set the form `action`, drop the mailto handler in main.js, and update README.txt + the form footnote text.
+**Contact form:** client-side validation (name required; email *or* phone required; email format; a message *or* at least one ticked challenge required), then opens a `mailto:` to `data-to` (`inquiry@profkons.com`) with a prefilled subject/body listing any ticked challenges under "Challenges we are facing". Nothing is submitted to a server. Field ids `name, company, designation, email, phone, message` are referenced by JS; each validated field sits in a `.field` wrapper with a `.error` span. To switch to Formspree/Netlify Forms, set the form `action`, drop the mailto handler in main.js, and update README.txt + the form footnote text.
 
-The gallery checkbox `value` is what gets sent into the contact message — keep `value` text in sync with the visible label (values use `&#39;`, labels `&rsquo;`). The initial "0 of 10" text is overwritten by JS but should match the checkbox count.
+The challenge checklist is a `<fieldset class="form-challenges">` in contact.html (ids `ch0`–`ch9`). Each checkbox `value` is what gets sent in the email — keep it in sync with the visible label (values use `&#39;`, labels `&rsquo;`).
 
 ### Content facts (keep consistent across pages)
 - Phone: `+91 96644 55807` (`tel:+919664455807`); email `inquiry@profkons.com`; LinkedIn `https://www.linkedin.com/in/profkons` (external links use `target="_blank" rel="noopener"`).
@@ -97,7 +97,7 @@ These facts appear in multiple places (hero, founder block, about, contact card,
 - Gallery posters: full size `poster-<slug>.jpg` + 640px-wide `poster-<slug>-thumb.jpg`. Add a new `<figure>` with a `<button data-full data-caption aria-label="View larger: …">` wrapping the thumb, plus `<figcaption>Title<span>subtitle</span></figcaption>`.
 
 ### Accessibility baseline (preserve it)
-Skip link, single `h1` per page, labelled sections, `aria-current` nav, `aria-expanded` toggle, decorative SVGs `aria-hidden`, gold `:focus-visible` outline, `aria-live` self-check result, `aria-invalid` + `aria-describedby` errors, reduced-motion support, print styles.
+Skip link, single `h1` per page, labelled sections, `aria-current` nav, `aria-expanded` toggle, decorative SVGs `aria-hidden`, gold `:focus-visible` outline, challenge checklist in a `<fieldset>`/`<legend>`, `aria-invalid` + `aria-describedby` errors, reduced-motion support, print styles.
 
 ## Housekeeping
 - `.DS_Store` is ignored via `.gitignore`; never commit it.

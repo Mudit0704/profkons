@@ -7,8 +7,8 @@ index.html      Home
 about.html      About ProfKons
 services.html   Services offered
 partners.html   Who we partner
-gallery.html    Gallery & insights (business-challenge self-check, post topics, posters)
-contact.html    Contact / Start a conversation
+gallery.html    Gallery & insights (posters, post topics)
+contact.html    Contact / Start a conversation (form with business-challenge checklist)
 privacy.html    Privacy Policy
 terms.html      Terms & Conditions
 assets/         css, js, fonts (self-hosted, no external requests) and images

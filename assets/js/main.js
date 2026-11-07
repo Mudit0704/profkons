@@ -60,26 +60,6 @@
     document.querySelectorAll(".service[id]").forEach(function (s) { io.observe(s); });
   }
 
-  /* ---------- Gallery: self-check ---------- */
-  var checks = document.querySelectorAll("[data-challenge]");
-  var countEl = document.querySelector("[data-challenge-count]");
-  var discussLink = document.querySelector("[data-challenge-link]");
-  if (checks.length && countEl && discussLink) {
-    var update = function () {
-      var picked = [];
-      checks.forEach(function (c) { if (c.checked) picked.push(c.value); });
-      countEl.textContent = picked.length + " of " + checks.length;
-      var href = "contact.html";
-      if (picked.length) {
-        href += "?challenges=" + encodeURIComponent(picked.join("\n"));
-      }
-      discussLink.setAttribute("href", href);
-      discussLink.textContent = picked.length ? "Discuss these with ProfKons" : "Talk to ProfKons";
-    };
-    checks.forEach(function (c) { c.addEventListener("change", update); });
-    update();
-  }
-
   /* ---------- Gallery: lightbox ---------- */
   var dialog = document.querySelector("[data-lightbox]");
   if (dialog && typeof dialog.showModal === "function") {
@@ -109,11 +89,12 @@
   var form = document.querySelector("[data-contact-form]");
   if (form) {
     var msg = form.querySelector("#message");
-    var params = new URLSearchParams(window.location.search);
-    var preset = params.get("challenges");
-    if (preset && msg && !msg.value) {
-      msg.value = "We are facing these challenges:\n- " + preset.split("\n").join("\n- ") + "\n\n";
-    }
+    var checks = form.querySelectorAll("[data-challenge]");
+    var pickedChallenges = function () {
+      var picked = [];
+      checks.forEach(function (c) { if (c.checked) picked.push(c.value); });
+      return picked;
+    };
 
     var setError = function (field, text) {
       var wrap = field.closest(".field");
@@ -145,7 +126,11 @@
         setError(email, "Enter an email address like name@company.com.");
         firstBad = firstBad || email;
       }
-      if (!msg.value.trim()) { setError(msg, "Tell us briefly what you would like to discuss."); firstBad = firstBad || msg; }
+      var challenges = pickedChallenges();
+      if (!msg.value.trim() && !challenges.length) {
+        setError(msg, "Tick a challenge above or tell us briefly what you would like to discuss.");
+        firstBad = firstBad || msg;
+      }
       if (firstBad) { firstBad.focus(); return; }
 
       var get = function (id) { var el = form.querySelector("#" + id); return el ? el.value.trim() : ""; };
@@ -157,7 +142,8 @@
         "Designation: " + (get("designation") || "-") + "\n" +
         "Email: " + (get("email") || "-") + "\n" +
         "Phone: " + (get("phone") || "-") + "\n\n" +
-        "What I would like to discuss:\n" + get("message") + "\n";
+        (challenges.length ? "Challenges we are facing:\n- " + challenges.join("\n- ") + "\n\n" : "") +
+        "What I would like to discuss:\n" + (get("message") || "-") + "\n";
 
       var to = form.getAttribute("data-to") || "inquiry@profkons.com";
       window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);

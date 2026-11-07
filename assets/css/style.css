@@ -730,33 +730,6 @@ h3 { font-size: var(--step-1); letter-spacing: -0.01em; line-height: 1.3; }
 @media (max-width: 760px) { .partner { grid-template-columns: 1fr; } }
 
 /* ---------- Gallery & insights ---------- */
-.selfcheck { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
-.selfcheck-aside { position: sticky; top: calc(var(--header-h) + 2rem); }
-.selfcheck-aside p { margin-top: 1rem; }
-.selfcheck-result {
-  margin-top: 1.75rem; padding: 1.4rem 1.5rem; border-radius: var(--radius-md);
-  background: var(--navy-900); color: rgba(255, 255, 255, 0.85);
-}
-.selfcheck-result p { margin: 0 0 1rem; font-family: var(--font-sans); font-weight: 500; font-size: 1rem; }
-.selfcheck-result strong { color: var(--orange); font-size: 1.25rem; }
-.challenges { list-style: none; display: grid; gap: 0.6rem; }
-.challenge label {
-  display: flex; gap: 1rem; align-items: flex-start; cursor: pointer;
-  padding: 1rem 1.2rem; border-radius: var(--radius-md); border: 1.5px solid var(--line); background: #fff;
-  font-size: 1.1rem; line-height: 1.45; color: var(--navy-900);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
-}
-.challenge input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.challenge .box {
-  flex: none; width: 24px; height: 24px; border-radius: 7px; border: 2px solid #9aa7bd; margin-top: 0.1rem;
-  display: grid; place-items: center; color: transparent; transition: all 0.15s ease;
-}
-.challenge .box .icon { width: 15px; height: 15px; stroke-width: 3; }
-.challenge input:checked + label { border-color: var(--orange); background: #fff8ee; }
-.challenge input:checked + label .box { background: var(--orange); border-color: var(--orange); color: var(--navy-950); }
-.challenge input:focus-visible + label { outline: 3px solid var(--gold); outline-offset: 2px; }
-@media (max-width: 860px) { .selfcheck { grid-template-columns: 1fr; } .selfcheck-aside { position: static; } }
-
 .topics { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; }
 .topics li {
   display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.6rem; align-items: baseline; padding: 1.3rem 0; border-top: 1px solid var(--line-dark);
@@ -830,6 +803,30 @@ h3 { font-size: var(--step-1); letter-spacing: -0.01em; line-height: 1.3; }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(0, 104, 190, 0.15); }
 .field.has-error input, .field.has-error textarea { border-color: #c2410c; }
 .field .error { font-family: var(--font-sans); font-size: 0.82rem; color: #b42318; min-height: 0; }
+/* business-challenge checklist inside the form */
+.form-challenges { border: 0; padding: 0; margin: 0; min-width: 0; }
+.form-challenges legend { padding: 0; margin-bottom: 0.6rem; font-family: var(--font-sans); font-weight: 500; font-size: 0.9rem; color: var(--navy-900); line-height: 1.45; }
+.form-challenges legend .opt { color: var(--muted); }
+.challenges { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.challenge { position: relative; display: flex; }
+.challenge label {
+  flex: 1; display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer;
+  padding: 0.75rem 0.9rem; border-radius: 12px; border: 1.5px solid var(--line); background: #fbfcfe;
+  font-family: var(--font-sans); font-weight: 500; font-size: 0.9rem; line-height: 1.45; color: var(--navy-900);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.challenge label:hover { border-color: #c9d2df; }
+.challenge input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.challenge .box {
+  flex: none; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #9aa7bd; margin-top: 0.05rem;
+  display: grid; place-items: center; color: transparent; transition: all 0.15s ease;
+}
+.challenge .box .icon { width: 13px; height: 13px; stroke-width: 3; }
+.challenge input:checked + label { border-color: var(--orange); background: #fff8ee; }
+.challenge input:checked + label .box { background: var(--orange); border-color: var(--orange); color: var(--navy-950); }
+.challenge input:focus-visible + label { outline: 3px solid var(--gold); outline-offset: 2px; }
+@media (max-width: 560px) { .challenges { grid-template-columns: 1fr; } }
+
 .form-foot { margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
 .form-foot p { margin: 0; font-family: var(--font-sans); font-size: 0.85rem; color: var(--muted); max-width: 32em; line-height: 1.5; }
 .form-status { margin-top: 1.25rem; padding: 1rem 1.2rem; border-radius: 12px; font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.5; display: none; }
