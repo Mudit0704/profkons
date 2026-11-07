@@ -11,10 +11,10 @@ Marketing site for **ProfKons** (profkons.com): an organisational development an
 ## Layout
 
 ```
-index.html      Home: hero (+ method band linking to services.html#approach), problem, outcomes (= the six services, linked), founder teaser, credentials, closing CTA
-about.html      Belief, full founder profile (#founder), what we bring, difference (steps), why ProfKons (#why), belief equation, philosophy (#philosophy), .cta-panel
-services.html   "How we work" 5-stage journey (#approach), then six services as <article class="service" id="..."> + sticky in-page index
-partners.html   "Our focus" checklist, "Who we partner" cards (.partner), .cta-panel
+index.html      Home (keep it brief): hero (what we do, 1–2 lines + contact button), "Business problems we solve" (6 cards → services.html#<id>), "Who we work with" (5 lines → partners.html), founder teaser (→ about.html), slim .cta-strip to contact
+about.html      Founder profile (#founder, functions + industries chips), track record bars, "How we work differently" (#why), philosophy (#philosophy, the founder's own framing — keep), .cta-panel
+services.html   "How we work" 5-stage journey (#approach), then six services, each with a problem / cost / how-we-help <dl class="service-case"> + focus areas, as <article class="service" id="..."> + sticky in-page index
+partners.html   Five client profiles (.partner: situation + "We help with" link), "Signs it's time to bring in a consultant" list, .cta-panel
 gallery.html    Poster gallery + <dialog> lightbox, then post topics
 contact.html    Contact card + mailto contact form (includes the business-challenge checklist)
 privacy.html    Legal (.legal), "Last updated: November 2026"
@@ -87,12 +87,18 @@ The challenge checklist is a `<fieldset class="form-challenges">` in contact.htm
 ### Content facts (keep consistent across pages)
 - Phone: `+91 96644 55807` (`tel:+919664455807`); email `inquiry@profkons.com`; LinkedIn `https://www.linkedin.com/in/profkons` (external links use `target="_blank" rel="noopener"`).
 - "35+ years of multidisciplinary global business experience".
-- Credentials bars (home): 35+ assessed, 14 partnered, 11 under execution, 3 turnarounds "in just the last 10 months"; `--w` widths are proportional to 35 (e.g. 14/35 = 40%). Recompute if numbers change.
+- Track record bars (About; also summarised in one line in the Home founder teaser): 35+ assessed, 14 partnered, 11 under execution, 3 turnarounds "in just the last 10 months"; `--w` widths are proportional to 35 (e.g. 14/35 = 40%). Recompute if numbers change.
 - Method wording is **Diagnose → Redesign → Implement → Measure** (→ Sustain on the approach journey). Use "Implement", not "Execute".
 - Six services (ids): `business-transformation`, `organisational-development`, `operational-excellence`, `profitability`, `strategy-execution`, `governance`. The Home "What we help businesses achieve" cards mirror these names and link to `services.html#<id>` — rename both together.
-- Content placement: Home holds short teasers that link out; the full founder bio, Why ProfKons and philosophy live on About; the approach journey lives on Services; client-fit content ("Our focus") lives on Who we partner.
+- Content placement: Home holds only short teasers that link out. Detail lives on the matching page: problems/services → Services, client types → Who we partner, founder and philosophy → About.
 - Each `.cta-panel` has its own heading. "Every business challenge has a starting point." is reserved for the Contact page H1 — don't reuse it.
 These facts appear in multiple places (hero, founder block, about, contact card, footer, posters' alt text) — grep before changing any of them.
+
+### Writing rules for copy
+- Lead with the concrete business problem, then what it costs the business, then how ProfKons helps through consulting. Avoid abstract phrases ("sustainable value creation", "enduring performance", "holistic") and slogans that say nothing actionable.
+- Keep Home short; add detail to the inner page instead.
+- Use the plain search terms people use for this category where they fit naturally: business consulting, management consulting/consultant, business transformation, ERP, SOPs, KPIs, working capital, MIS, internal controls, corporate governance, independent director. Each page's `<title>` and meta description carry these too. Don't keyword-stuff.
+- Don't add claims (clients, results, numbers) that aren't already on the site or confirmed by the owner.
 
 ### Images
 - Always set `width`/`height` attributes (intrinsic size) and meaningful `alt`. Below-the-fold images use `loading="lazy"`; the home hero portrait uses `fetchpriority="high"`.
